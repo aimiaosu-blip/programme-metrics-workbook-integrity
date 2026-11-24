@@ -1,0 +1,17 @@
+const test=require('node:test');
+const assert=require('node:assert/strict');
+const {validateRows,extractReferences}=require('../apps-script/Code.js');
+const rows=require('../data/programmes.json');
+const headers=Object.keys(rows[0]);
+const grid=()=>[headers,...rows.map(r=>headers.map(h=>r[h]))];
+test('valid synthetic data including genuine zero',()=>assert.equal(validateRows(grid()),true));
+test('column order can change',()=>assert.equal(validateRows(grid().map(r=>r.toReversed())),true));
+test('missing headers rejected',()=>assert.throws(()=>validateRows(grid().map(r=>r.slice(1))),/Missing header/));
+test('duplicate headers rejected',()=>{let g=grid();g[0]=[...g[0]];g[0][1]='project_id';assert.throws(()=>validateRows(g),/Duplicate headers/);});
+test('duplicate keys rejected',()=>{let g=grid();g[2][0]=g[1][0];assert.throws(()=>validateRows(g),/duplicate project/);});
+test('blank amount is not zero',()=>{let g=grid();g[1][2]='';assert.throws(()=>validateRows(g),/Invalid/);});
+test('funding inconsistencies rejected',()=>{let g=grid();g[1][4]=50000;assert.throws(()=>validateRows(g),/hierarchy/);});
+test('fractional participant count rejected',()=>{let g=grid();g[1][5]=0.5;assert.throws(()=>validateRows(g),/integer/);});
+test('quoted sheet references extracted',()=>assert.deepEqual(extractReferences("=SUM('Source'!$C$2:$C$7)").refs,[{sheet:'Source',range:'C2:C7'}]));
+test('dynamic reference needs review',()=>assert.equal(extractReferences('=INDIRECT(A1)').needsReview,true));
+test('external reference needs review',()=>assert.equal(extractReferences('=IMPORTRANGE(A1,"Sheet1!A1")').needsReview,true));

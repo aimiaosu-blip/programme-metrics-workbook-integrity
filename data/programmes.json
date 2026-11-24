@@ -1,0 +1,8 @@
+[
+  {"project_id":"SYN-001","region":"Africa","requested_usd":12000,"approved_usd":10000,"disbursed_usd":6000,"participants":120},
+  {"project_id":"SYN-002","region":"Asia","requested_usd":18000,"approved_usd":15000,"disbursed_usd":12000,"participants":180},
+  {"project_id":"SYN-003","region":"Africa","requested_usd":8000,"approved_usd":0,"disbursed_usd":0,"participants":0},
+  {"project_id":"SYN-004","region":"Europe","requested_usd":22000,"approved_usd":20000,"disbursed_usd":14000,"participants":90},
+  {"project_id":"SYN-005","region":"Asia","requested_usd":10000,"approved_usd":8000,"disbursed_usd":4000,"participants":80},
+  {"project_id":"SYN-006","region":"Americas","requested_usd":15000,"approved_usd":12000,"disbursed_usd":9000,"participants":150}
+]

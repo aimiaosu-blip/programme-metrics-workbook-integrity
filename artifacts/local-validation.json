@@ -1,0 +1,52 @@
+{
+  "engine": "artifact-tool",
+  "metrics": [
+    {
+      "metric": "Projects",
+      "expected": 6,
+      "actual": 6
+    },
+    {
+      "metric": "Requested USD",
+      "expected": 85000,
+      "actual": 85000
+    },
+    {
+      "metric": "Approved USD",
+      "expected": 65000,
+      "actual": 65000
+    },
+    {
+      "metric": "Disbursed USD",
+      "expected": 45000,
+      "actual": 45000
+    },
+    {
+      "metric": "Participants",
+      "expected": 620,
+      "actual": 620
+    },
+    {
+      "metric": "Approval ratio",
+      "expected": 0.7647058823529411,
+      "actual": 0.7647058823529411
+    },
+    {
+      "metric": "Disbursement ratio",
+      "expected": 0.6923076923076923,
+      "actual": 0.6923076923076923
+    },
+    {
+      "metric": "Undisbursed USD",
+      "expected": 20000,
+      "actual": 20000
+    }
+  ],
+  "tests": [
+    "all eight metrics match independently specified golden values",
+    "baseline and refactored reconcile",
+    "header reorder preserves refactored values and breaks positional baseline",
+    "source amount mutation changes calculated value"
+  ],
+  "google_sheets_execution": "Native formula readback and runIntegrityAudit verified; script execution timestamp 2026-11-24T14:57:52.037Z"
+}

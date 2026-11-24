@@ -1,0 +1,22 @@
+{
+  "baseline": [
+    "=COUNTA(Source!A2:A7)",
+    "=SUM(Source!C2:C7)",
+    "=SUM(Source!D2:D7)",
+    "=SUM(Source!E2:E7)",
+    "=SUM(Source!F2:F7)",
+    "=IF(B3=0,\"n.a.\",B4/B3)",
+    "=IF(B4=0,\"n.a.\",B5/B4)",
+    "=B4-B5"
+  ],
+  "refactored": [
+    "=COUNTA(INDEX(Source!$A$2:$F$7,0,MATCH(\"project_id\",Source!$A$1:$F$1,0)))",
+    "=SUM(INDEX(Source!$A$2:$F$7,0,MATCH(\"requested_usd\",Source!$A$1:$F$1,0)))",
+    "=SUM(INDEX(Source!$A$2:$F$7,0,MATCH(\"approved_usd\",Source!$A$1:$F$1,0)))",
+    "=SUM(INDEX(Source!$A$2:$F$7,0,MATCH(\"disbursed_usd\",Source!$A$1:$F$1,0)))",
+    "=SUM(INDEX(Source!$A$2:$F$7,0,MATCH(\"participants\",Source!$A$1:$F$1,0)))",
+    "=IF(B3=0,\"n.a.\",B4/B3)",
+    "=IF(B4=0,\"n.a.\",B5/B4)",
+    "=B4-B5"
+  ]
+}
